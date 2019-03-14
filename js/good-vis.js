@@ -101,45 +101,55 @@ function main(type, theme) {
             // console.log(fips);
 
             //Use the correct data, and set the disclaimer
-            var disclaimerText;
-            var domain;
+            let disclaimerText, domain, title;
             switch (type) {
                 case 0:
                     disclaimerText = "unemployment rates";
+                    title = "Unemployment Rates";
                     domain = unemploymentRateDomain;
                     break;
                 case 1:
                     disclaimerText = "median household income";
+                    title = "Median Household Income";
                     domain = householdIncomeDomain;
                     break;
                 case 2:
                     disclaimerText = "poverty for all ages";
+                    title = "Poverty - All Ages";
                     domain = povertyAllAgesDomain;
                     break;
                 case 3:
                     disclaimerText = "poverty for ages 0-17";
+                    title = "Poverty - Ages 0-17";
                     domain = povertyMinorDomain;
                     break;
                 case 4:
                     disclaimerText = "percentages of people with less than a high school diploma";
+                    title = "Less than a High School Diploma";
                     domain = educationLTHSDDomain;
                     break;
                 case 5:
                     disclaimerText = "percentages of people with a high school diploma only";
+                    title = "High School Diploma Only";
                     domain = educationHSDODomain;
                     break;
                 case 6:
                     disclaimerText = "percentages of people with some college (1-3 years)";
+                    title = "Some College (1-3 years)";
                     domain = educationSCADDomain;
                     break;
                 case 7:
                     disclaimerText = "percentages of people with a bachelor's degree or higher";
+                    title = "Bachelor's Degree or Higher";
                     domain = educationBDHDomain;
                     break;
             }
 
             //Set the disclaimer
             document.getElementById("verbose-disclaimer").innerText = disclaimerText;
+
+            //Set the page title
+            document.getElementById("page-title").innerText = title;
 
             //Set the legend
             document.getElementById("legend-min-val").innerText =
@@ -249,7 +259,7 @@ function main(type, theme) {
                             break;
                     }
 
-                    if (!val) return "#FFFFFF";
+                    if (!val) return "#336DDA";
                     return fill(val);
                 })
                 // .on("mouseover", handleMouseOver)
@@ -272,7 +282,7 @@ function main(type, theme) {
 
 function handleMouseOver(d, i) {
     let props = d.properties;
-    // console.log(d);
+    console.log(d);
     if (props.Area) {
         descriptor.innerText = props.Area.County + ", " + props.Area.State;
     } else {
