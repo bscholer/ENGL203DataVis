@@ -12,10 +12,10 @@ const DEFAULT_THEME = 0;
 function submitListener() {
     console.log("Hi");
     var dataType = getRadioVal(document.getElementById("data-form"), "data");
-    var themeType = getRadioVal(document.getElementById("theme-form"), "theme");
+    //var themeType = getRadioVal(document.getElementById("theme-form"), "theme");
     dataType = parseInt(dataType);
-    themeType = parseInt(themeType);
-    main(dataType, themeType)
+    //themeType = parseInt(themeType);
+    main(dataType, DEFAULT_THEME);
 }
 
 var descriptor = document.getElementById("descriptor");
@@ -34,6 +34,8 @@ function main(type, theme) {
         console.log(map.getAttribute("mapType"));
         if (map.getAttribute("mapType") !== type + "" || map.getAttribute("themeType") !== theme + "") {
             map.parentNode.removeChild(map);
+            document.getElementById("page-title").innerText = "";
+			document.getElementById("legend-container").style.display = "none";
         } else {
             return;
         }
@@ -105,7 +107,7 @@ function main(type, theme) {
             switch (type) {
                 case 0:
                     disclaimerText = "unemployment rates";
-                    title = "Unemployment Rates";
+                    title = "Unemployment Rate";
                     domain = unemploymentRateDomain;
                     break;
                 case 1:
@@ -115,32 +117,32 @@ function main(type, theme) {
                     break;
                 case 2:
                     disclaimerText = "poverty for all ages";
-                    title = "Poverty - All Ages";
+                    title = "Percent in Poverty - All Ages";
                     domain = povertyAllAgesDomain;
                     break;
                 case 3:
                     disclaimerText = "poverty for ages 0-17";
-                    title = "Poverty - Ages 0-17";
+                    title = "Percent in Poverty - Ages 0-17";
                     domain = povertyMinorDomain;
                     break;
                 case 4:
                     disclaimerText = "percentages of people with less than a high school diploma";
-                    title = "Less than a High School Diploma";
+                    title = "Percent with Less than a High School Diploma";
                     domain = educationLTHSDDomain;
                     break;
                 case 5:
                     disclaimerText = "percentages of people with a high school diploma only";
-                    title = "High School Diploma Only";
+                    title = "Percent with a High School Diploma Only";
                     domain = educationHSDODomain;
                     break;
                 case 6:
                     disclaimerText = "percentages of people with some college (1-3 years)";
-                    title = "Some College (1-3 years)";
+                    title = "Percent with Some College (1-3 years)";
                     domain = educationSCADDomain;
                     break;
                 case 7:
                     disclaimerText = "percentages of people with a bachelor's degree or higher";
-                    title = "Bachelor's Degree or Higher";
+                    title = "Percent with a Bachelor's Degree or Higher";
                     domain = educationBDHDomain;
                     break;
             }
@@ -163,6 +165,7 @@ function main(type, theme) {
                 $("#legend").removeClass(themeData[2]);
             });
             $("#legend").addClass(themes[theme][2]);
+			document.getElementById("legend-container").style.display = "grid";
 
             //Draw the map
             var width = 960,
