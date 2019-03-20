@@ -36,6 +36,7 @@ function main(type, theme) {
             map.parentNode.removeChild(map);
             document.getElementById("page-title").innerText = "";
 			document.getElementById("legend-container").style.display = "none";
+			document.getElementById("loader").style.display = "block";
         } else {
             return;
         }
@@ -166,6 +167,7 @@ function main(type, theme) {
             });
             $("#legend").addClass(themes[theme][2]);
 			document.getElementById("legend-container").style.display = "grid";
+            document.getElementById("loader").style.display = "none";
 
             //Draw the map
             var width = 960,

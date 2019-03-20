@@ -78,7 +78,7 @@ body {
     display: grid;
     grid-template-columns: 7em;
     grid-template-rows: 1.5em 1.5em 400px 1.5em;
-    grid-row-gap: 1em;
+    grid-row-gap: .3em;
     grid-template-areas: "legend-title" "min" "legend" "max";
     grid-column-gap: .5em;
     font-size: x-large;
