@@ -299,7 +299,7 @@ function handleMouseOver(d, i) {
     let dataStr = "";
     if (props.Unemployment) {
         dataStr += "<b>Unemployment</b><br>";
-        dataStr += "Unemployment Rate: <b>" + props.Unemployment.UnemploymentRate.toFixed(1) + "%</b><br>";
+        dataStr += "Unemployment Rate: <b>" + props.Unemployment.UnemploymentRate + "</b><br>";
     }
     if (props.Poverty) {
         dataStr += "<br><b>Poverty</b><br>";
