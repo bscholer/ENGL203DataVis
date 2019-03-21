@@ -23,11 +23,6 @@ var dataArea = document.getElementById("data");
 
 main(DEFAULT_TYPE, DEFAULT_THEME);
 
-/*
-Types:
-0: Unemployment Rate
-1: Household Income
- */
 function main(type, theme) {
     let map = document.getElementById("map");
     if (map) {
